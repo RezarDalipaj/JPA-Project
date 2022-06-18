@@ -6,7 +6,7 @@ import java.sql.Date;
 @Table
 public class Booking {
         @Id
-        @GeneratedValue(strategy = GenerationType.AUTO)
+        @GeneratedValue(strategy = GenerationType.IDENTITY)
         @Column(unique = true)
         private Integer id;
         @Column
