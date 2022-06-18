@@ -1,5 +1,9 @@
 package org.example;
 
+import MainImpl.BookingMain;
+import MainImpl.FlightMain;
+import MainImpl.UserDetailsMain;
+import MainImpl.UserMain;
 import org.example.model.User;
 import org.example.services.UserService;
 
@@ -11,83 +15,100 @@ import java.util.Scanner;
 public class Main {
 
     public static void main(String[] args) {
+        String result="";
         Scanner read = new Scanner(System.in);
-        UserService user = new UserService();
-        List<User> userList = user.findAll();
-        System.out.println("All the users...\n");
-        for (User us : userList) {
-            System.out.println(us);
-        }
-        Integer id = 0;
-        System.out.println("\nAdding user\n");
-        System.out.println("Enter the user id");
-        try {
-            id = read.nextInt();
-            read.nextLine();
-        }catch (InputMismatchException e){
-            System.out.println("Id should be a number");
-            read.nextLine();
-        }
-        System.out.println("Enter the username");
-        String name = read.nextLine();
-        System.out.println("Enter the user password");
-        String pass = read.nextLine();
-        System.out.println("Enter the user role");
-        String role = read.nextLine();
-        Optional<User> userById = user.findById(id);
-        if (userById.isPresent()){
-            User u1 = userById.get();
-            u1.setUserName(name);
-            u1.setRole(role);
-            u1.setPassword(pass);
-            user.save(u1);
-        }
-        else {
-            User u2 = new User();
-            u2.setId(null);
-            u2.setUserName(name);
-            u2.setRole(role);
-            u2.setPassword(pass);
-            user.save(u2);
-        }
+        while (!(result.equalsIgnoreCase("5"))){
+            System.out.println("Menu User\n1.Save User\n2.Find user by id\n3.Find all users\n4.Delete a user\n5.Exit\nChoose an option (1-5)");
+            result = read.nextLine();
+            switch (result){
+                case "1":   UserMain.add();
+                            break;
 
-        Integer find = 0;
-        System.out.println("\nFinding user by id\n");
-        try {
-            System.out.println("Enter the user id you want to find");
-            find = read.nextInt();
-            read.nextLine();
-        }catch (InputMismatchException e){
-            read.nextLine();
-            System.out.println("Id should be a number");
+                case "2":   UserMain.findId();
+                            break;
+
+                case "3":   UserMain.find();
+                            break;
+
+                case "4":   UserMain.remove();
+                            break;
+
+                case "5":   break;
+
+                default:    System.out.println("Wrong option!");
+                            break;
+            }
         }
-        Optional<User> user1 = user.findById(find);
-        if (user1.isPresent()){
-            User byId = user1.get();
-            System.out.println(byId);
+        result = "";
+        while (!(result.equalsIgnoreCase("5"))){
+            System.out.println("Menu User Details\n1.Save User details\n2.Find user's details by id\n3.Find all user's details\n4.Delete a user's details\n5.Exit\nChoose an option (1-5)");
+            result = read.nextLine();
+            switch (result){
+                case "1":   UserDetailsMain.add();
+                    break;
+
+                case "2":   UserDetailsMain.findId();
+                    break;
+
+                case "3":   UserDetailsMain.find();
+                    break;
+
+                case "4":   UserDetailsMain.remove();
+                    break;
+
+                case  "5":  break;
+
+                default:    System.out.println("Wrong option!");
+                    break;
+
+            }
         }
-        else
-            System.out.println("This user doesnt exist");
-        System.out.println("\nDeleting user\n");
-        try {
-            System.out.println("Enter the user id you want to delete");
-            find = read.nextInt();
-            read.nextLine();
-        }catch (InputMismatchException e){
-            read.nextLine();
-            System.out.println("Id should be a number");
+        result = "";
+        while (!(result.equalsIgnoreCase("5"))){
+            System.out.println("Menu Booking\n1.Save Booking\n2.Find booking by id\n3.Find all bookings\n4.Delete a booking\n5.Exit\nChoose an option (1-5)");
+            result = read.nextLine();
+            switch (result){
+                case "1":   BookingMain.add();
+                    break;
+
+                case "2":   BookingMain.findId();
+                    break;
+
+                case "3":   BookingMain.find();
+                    break;
+
+                case "4":   BookingMain.remove();
+                    break;
+
+                case  "5":  break;
+
+                default:    System.out.println("Wrong option!");
+                    break;
+
+            }
         }
-        Optional<User> user2 = user.findById(find);
-        if (user2.isPresent()){
-            User udelete = user2.get();
-            user.delete(udelete);
-        }
-        else
-            System.out.println("This user doesnt exist");
-        System.out.println("All the users...\n");
-        userList = user.findAll();
-        for (User us : userList) {
-            System.out.println(us);
+        result = "";
+        while (!(result.equalsIgnoreCase("5"))){
+            System.out.println("Menu Flights\n1.Save Flight\n2.Find flight by id\n3.Find all flights\n4.Delete a flight\n5.Exit\nChoose an option (1-5)");
+            result = read.nextLine();
+            switch (result){
+                case "1":   FlightMain.add();
+                    break;
+
+                case "2":   FlightMain.findId();
+                    break;
+
+                case "3":   FlightMain.find();
+                    break;
+
+                case "4":   FlightMain.remove();
+                    break;
+
+                case  "5":  break;
+
+                default:    System.out.println("Wrong option!");
+                    break;
+            }
         }
     }
 }

@@ -1,15 +1,15 @@
 package org.example.model;
 
 import javax.persistence.*;
-import java.util.Date;
+import java.sql.Date;
 @Entity
+@Table
 public class Booking {
         @Id
-        @GeneratedValue(strategy = GenerationType.IDENTITY)
-        @Column(nullable = false, unique = true)
+        @GeneratedValue(strategy = GenerationType.AUTO)
+        @Column(unique = true)
         private Integer id;
         @Column
-        @Temporal(value = TemporalType.DATE)
         private Date bookingDate;
         @Column
         private String status;

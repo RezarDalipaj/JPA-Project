@@ -1,12 +1,13 @@
 package org.example.model;
 
 import javax.persistence.*;
-import java.util.Date;
-
+import java.sql.Date;
+@Entity
+@Table
 public class Flight {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(nullable = false, unique = true)
+    @Column(unique = true)
     private Integer id;
     @Column
     private String origin;
@@ -17,10 +18,8 @@ public class Flight {
     @Column
     private Integer flightNumber;
     @Column
-    @Temporal(value = TemporalType.DATE)
     private Date departureDate;
     @Column
-    @Temporal(value = TemporalType.DATE)
     private Date arrivalDate;
     @Column
     private String status;
