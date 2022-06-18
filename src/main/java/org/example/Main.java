@@ -45,21 +45,21 @@ public class Main {
             result = read.nextLine();
             switch (result){
                 case "1":   UserDetailsMain.add();
-                    break;
+                            break;
 
                 case "2":   UserDetailsMain.findId();
-                    break;
+                            break;
 
                 case "3":   UserDetailsMain.find();
-                    break;
+                            break;
 
                 case "4":   UserDetailsMain.remove();
-                    break;
+                            break;
 
                 case  "5":  break;
 
                 default:    System.out.println("Wrong option!");
-                    break;
+                            break;
 
             }
         }
@@ -69,21 +69,21 @@ public class Main {
             result = read.nextLine();
             switch (result){
                 case "1":   BookingMain.add();
-                    break;
+                            break;
 
                 case "2":   BookingMain.findId();
-                    break;
+                            break;
 
                 case "3":   BookingMain.find();
-                    break;
+                            break;
 
                 case "4":   BookingMain.remove();
-                    break;
+                            break;
 
                 case  "5":  break;
 
                 default:    System.out.println("Wrong option!");
-                    break;
+                            break;
 
             }
         }
@@ -93,21 +93,21 @@ public class Main {
             result = read.nextLine();
             switch (result){
                 case "1":   FlightMain.add();
-                    break;
+                            break;
 
                 case "2":   FlightMain.findId();
-                    break;
+                            break;
 
                 case "3":   FlightMain.find();
-                    break;
+                            break;
 
                 case "4":   FlightMain.remove();
-                    break;
+                            break;
 
                 case  "5":  break;
 
                 default:    System.out.println("Wrong option!");
-                    break;
+                            break;
             }
         }
     }
