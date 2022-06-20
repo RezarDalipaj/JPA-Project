@@ -21,10 +21,10 @@ public class User {
     private String password;
     @Column
     private String role;
-    @OneToOne(cascade = CascadeType.ALL, mappedBy = "user")
+    @OneToOne(cascade = CascadeType.ALL, mappedBy = "theUser")
     private UserDetails userDetails;
 
-    @OneToMany(cascade = CascadeType.ALL,mappedBy = "user")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
     private List<Booking> bookings;
 
     public Integer getId() {

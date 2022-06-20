@@ -19,7 +19,7 @@ public class UserDetails {
     private String phoneNumber;
     @OneToOne
     @JoinColumn(name = "userId", referencedColumnName = "id")
-    private User user;
+    private User theUser;
 
     public Integer getId() {
         return id;
@@ -62,11 +62,11 @@ public class UserDetails {
     }
 
     public User getUser() {
-        return user;
+        return theUser;
     }
 
     public void setUser(User user) {
-        this.user = user;
+        this.theUser = user;
     }
 
     @Override
@@ -77,7 +77,7 @@ public class UserDetails {
                 ", lastName='" + lastName + '\'' +
                 ", email='" + email + '\'' +
                 ", phoneNumber='" + phoneNumber + '\'' +
-                ", user=" + user.getId() +
+                ", user=" + theUser.getId() +
                 '}';
     }
 }

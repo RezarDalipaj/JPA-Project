@@ -46,6 +46,8 @@ public class UserMain {
 //            u1.setUserDetails(ud);
             user.save(u1);
             UserDetails ud = UserDetailsMain.add(u1);
+            u1.setUserDetails(ud);
+            user.save(u1);
             return u1;
         }
         else {
@@ -57,6 +59,8 @@ public class UserMain {
 //            u2.setUserDetails(ud);
             user.save(u2);
             UserDetails ud = UserDetailsMain.add(u2);
+            u2.setUserDetails(ud);
+            user.save(u2);
             return u2;
         }
     }
