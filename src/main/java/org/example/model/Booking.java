@@ -2,6 +2,8 @@ package org.example.model;
 
 import javax.persistence.*;
 import java.sql.Date;
+import java.util.List;
+
 @Entity
 @Table
 public class Booking {
@@ -16,9 +18,12 @@ public class Booking {
         @ManyToOne
         @JoinColumn(name = "user_id",nullable = false)
         private User user;
-        @ManyToOne
-        @JoinColumn(name = "flight_id", nullable = false)
-        private Flight flight;
+        @ManyToMany
+        @JoinTable(
+                name = "booking_flight",
+                joinColumns = @JoinColumn(name = "flight_id"),
+                inverseJoinColumns = @JoinColumn(name = "booking_id"))
+        private List<Flight> flights;
 
     public Integer getId() {
         return id;
@@ -52,12 +57,12 @@ public class Booking {
         this.user = user;
     }
 
-    public Flight getFlight() {
-        return flight;
+    public List<Flight> getFlights() {
+        return flights;
     }
 
-    public void setFlight(Flight flight) {
-        this.flight = flight;
+    public void setFlights(List<Flight> flights) {
+        this.flights = flights;
     }
 
     @Override
@@ -67,7 +72,6 @@ public class Booking {
                 ", bookingDate=" + bookingDate +
                 ", status='" + status + '\'' +
                 ", user id=" + user.getId()+ "username: " + user.getUserName() +
-                ", flight id=" + flight.getId() + "airline: " + flight.getAirline() +
                 '}';
     }
 }

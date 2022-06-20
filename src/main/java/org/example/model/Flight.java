@@ -26,7 +26,7 @@ public class Flight {
     private Date arrivalDate;
     @Column
     private String status;
-    @OneToMany(cascade = CascadeType.ALL,mappedBy = "flight")
+    @ManyToMany(cascade = CascadeType.ALL,mappedBy = "flights")
     private List<Booking> bookings;
 
     public Integer getId() {
@@ -97,8 +97,8 @@ public class Flight {
         return bookings;
     }
 
-    public void setUsers(List<Booking> users) {
-        this.bookings = users;
+    public void setBookings(List<Booking> bookings) {
+        this.bookings = bookings;
     }
 
     @Override

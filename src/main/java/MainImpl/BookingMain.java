@@ -39,13 +39,32 @@ public class BookingMain {
         int uId = read.nextInt();
         UserService user = new UserService();
         Optional<User> userById = user.findById(uId);
-        System.out.println("Enter the id of the flight");
-        int fId = read.nextInt();
+        System.out.println("The flights of this booking...");
+        int result = 0;
         FlightService flight = new FlightService();
-        Optional<Flight> flightById = flight.findById(fId);
-        if (userById.isPresent() && flightById.isPresent()){
+        List<Flight> flights = new ArrayList<>();
+        while (result != -1){
+            System.out.println("Add one flight id to this booking (-1 to stop)");
+            try {
+                result = read.nextInt();
+                read.nextLine();
+            }
+            catch (InputMismatchException e){
+                System.out.println("Id should be a number");
+                read.nextLine();
+            }
+            Optional<Flight> flightById = flight.findById(result);
+            if (flightById.isPresent()){
+                Flight fbyId = flightById.get();
+                flights.add(fbyId);
+            }
+            else if (result != -1){
+                System.out.println("This flight doesnt exist");
+                return null;
+            }
+        }
+        if (userById.isPresent()){
             User ubyId = userById.get();
-            Flight fbyId = flightById.get();
             Date date = new Date(System.currentTimeMillis());
             System.out.println("Enter the status");
             String status = read.nextLine();
@@ -55,7 +74,7 @@ public class BookingMain {
                 b1.setStatus(status);
                 b1.setBookingDate(date);
                 b1.setUser(ubyId);
-                b1.setFlight(fbyId);
+                b1.setFlights(flights);
                 booking.save(b1);
                 return b1;
             }
@@ -65,13 +84,13 @@ public class BookingMain {
                 b2.setStatus(status);
                 b2.setBookingDate(date);
                 b2.setUser(ubyId);
-                b2.setFlight(fbyId);
+                b2.setFlights(flights);
                 booking.save(b2);
                 return b2;
             }
         }
         else {
-            System.out.println("Couldnt add booking. Invalid data");
+            System.out.println("Couldnt add booking. Invalid user");
             return null;
         }
     }

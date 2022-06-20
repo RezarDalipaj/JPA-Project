@@ -37,15 +37,15 @@ public class UserMain {
         String pass = read.nextLine();
         System.out.println("Enter the user role");
         String role = read.nextLine();
-        UserDetails ud = UserDetailsMain.add();
         Optional<User> userById = user.findById(id);
         if (userById.isPresent()){
             User u1 = userById.get();
             u1.setUserName(name);
             u1.setRole(role);
             u1.setPassword(pass);
-            u1.setUserDetails(ud);
+//            u1.setUserDetails(ud);
             user.save(u1);
+            UserDetails ud = UserDetailsMain.add(u1);
             return u1;
         }
         else {
@@ -54,8 +54,9 @@ public class UserMain {
             u2.setUserName(name);
             u2.setRole(role);
             u2.setPassword(pass);
-            u2.setUserDetails(ud);
+//            u2.setUserDetails(ud);
             user.save(u2);
+            UserDetails ud = UserDetailsMain.add(u2);
             return u2;
         }
     }

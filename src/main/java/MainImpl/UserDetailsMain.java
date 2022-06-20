@@ -1,6 +1,7 @@
 package MainImpl;
 
 import org.example.model.Flight;
+import org.example.model.User;
 import org.example.model.UserDetails;
 import org.example.services.FlightService;
 import org.example.services.UserDetailsService;
@@ -16,7 +17,7 @@ public class UserDetailsMain {
             System.out.println(ud);
         }
     }
-    public static UserDetails add(){
+    public static UserDetails add(User usser){
         Scanner read = new Scanner(System.in);
         UserDetailsService userDetail = new UserDetailsService();
         Integer id = 0;
@@ -35,6 +36,7 @@ public class UserDetailsMain {
         ud2.setLastName(ln);
         ud2.setEmail(email);
         ud2.setPhoneNumber(phone);
+        ud2.setUser(usser);
         userDetail.save(ud2);
         return ud2;
     }
