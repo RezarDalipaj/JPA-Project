@@ -82,6 +82,7 @@ public class User {
                 ", userName='" + userName + '\'' +
                 ", password='" + password + '\'' +
                 ", role='" + role + '\'' +
+                ", userdetails: first name="+ userDetails.getFirstName() + ", last name="+ userDetails.getLastName() + ", email="+ userDetails.getEmail() + ", phone number="+ userDetails.getPhoneNumber() +
                 '}';
     }
 }

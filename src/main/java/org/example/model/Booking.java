@@ -65,13 +65,22 @@ public class Booking {
         this.flights = flights;
     }
 
+    public String printFlights(){
+        String fl="";
+        int i=1;
+        for (Flight f:flights) {
+            fl+="{Flight #"+i+": id="+f.getId()+", airline="+f.getAirline()+"} ";
+        }
+        return fl;
+    }
+
     @Override
     public String toString() {
         return "Booking{" +
                 "id=" + id +
                 ", bookingDate=" + bookingDate +
                 ", status='" + status + '\'' +
-                ", user id=" + user.getId()+ "username: " + user.getUserName() +
-                '}';
+                ", user id=" + user.getId()+ ", username=" + user.getUserName() +
+                ","+printFlights();
     }
 }
