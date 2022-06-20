@@ -1,8 +1,15 @@
 package org.example.model;
 import javax.persistence.*;
+import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table
+//@NamedQueries({
+//        @NamedQuery(name = "flightsOfAUser", query = "SELECT flight_id FROM user_flight uf WHERE uf.user_id = :userId"),
+//        @NamedQuery(name = "bookingsOfAUser", query = "SELECT b FROM booking b WHERE user_id = :userId"),
+//        @NamedQuery(name = "usersOfAFlight", query = "SELECT user_id FROM user_flight uf WHERE uf.flight_id = :flightId")
+//})
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -14,6 +21,11 @@ public class User {
     private String password;
     @Column
     private String role;
+    @OneToOne(cascade = CascadeType.ALL, mappedBy = "user")
+    private UserDetails userDetails;
+
+    @OneToMany(cascade = CascadeType.ALL,mappedBy = "user")
+    private List<Booking> bookings;
 
     public Integer getId() {
         return id;
@@ -45,6 +57,22 @@ public class User {
 
     public void setRole(String role) {
         this.role = role;
+    }
+
+    public UserDetails getUserDetails() {
+        return userDetails;
+    }
+
+    public void setUserDetails(UserDetails userDetails) {
+        this.userDetails = userDetails;
+    }
+
+    public List<Booking> getBookings() {
+        return bookings;
+    }
+
+    public void setBookings(List<Booking> bookings) {
+        this.bookings = bookings;
     }
 
     @Override

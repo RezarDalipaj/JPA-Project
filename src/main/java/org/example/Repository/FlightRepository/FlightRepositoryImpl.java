@@ -9,6 +9,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 
 public class FlightRepositoryImpl implements FlightRepository{
     private EntityManager entityManager = EntityManagerConfig.getEntityManager();
@@ -48,10 +49,17 @@ public class FlightRepositoryImpl implements FlightRepository{
 
     @Override
     public Flight delete(Flight f) {
-        Flight flight = entityManager.find(Flight.class,f.getId());
         entityManager.getTransaction().begin();
-        entityManager.remove(flight);
+        entityManager.remove(f);
         entityManager.getTransaction().commit();
-        return flight;
+        return f;
+    }
+
+    @Override
+    public List<User> allUsers(int x) {
+//        TypedQuery<User> query = entityManager.createNamedQuery("usersOfAFlight",User.class);
+//        query.setParameter("flightId", x);
+//        return query.getResultList();
+        return null;
     }
 }

@@ -16,19 +16,11 @@ public class UserDetailsMain {
             System.out.println(ud);
         }
     }
-    public static void add(){
+    public static UserDetails add(){
         Scanner read = new Scanner(System.in);
         UserDetailsService userDetail = new UserDetailsService();
         Integer id = 0;
         System.out.println("\nAdding user details\n");
-        System.out.println("Enter user detail id");
-        try {
-            id = read.nextInt();
-            read.nextLine();
-        }catch (InputMismatchException e){
-            System.out.println("Id should be a number");
-            read.nextLine();
-        }
         System.out.println("Enter the first name");
         String fn = read.nextLine();
         System.out.println("Enter the last name");
@@ -37,24 +29,14 @@ public class UserDetailsMain {
         String email = read.nextLine();
         System.out.println("Enter the phone number");
         String phone = read.nextLine();
-        Optional<UserDetails> userDetailById = userDetail.findById(id);
-        if (userDetailById.isPresent()){
-            UserDetails ud1 = userDetailById.get();
-            ud1.setFirstName(fn);
-            ud1.setLastName(ln);
-            ud1.setEmail(email);
-            ud1.setPhoneNumber(phone);
-            userDetail.save(ud1);
-        }
-        else {
-            UserDetails ud2 = new UserDetails();
-            ud2.setId(null);
-            ud2.setFirstName(fn);
-            ud2.setLastName(ln);
-            ud2.setEmail(email);
-            ud2.setPhoneNumber(phone);
-            userDetail.save(ud2);
-        }
+        UserDetails ud2 = new UserDetails();
+        ud2.setId(null);
+        ud2.setFirstName(fn);
+        ud2.setLastName(ln);
+        ud2.setEmail(email);
+        ud2.setPhoneNumber(phone);
+        userDetail.save(ud2);
+        return ud2;
     }
     public static void findId(){
         Scanner read = new Scanner(System.in);

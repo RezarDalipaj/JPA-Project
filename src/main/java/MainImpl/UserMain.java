@@ -1,6 +1,7 @@
 package MainImpl;
 
 import org.example.model.User;
+import org.example.model.UserDetails;
 import org.example.services.UserService;
 
 import java.util.InputMismatchException;
@@ -17,7 +18,7 @@ public class UserMain {
             System.out.println(us);
         }
     }
-    public static void add(){
+    public static User add(){
         Scanner read = new Scanner(System.in);
         UserService user = new UserService();
         Integer id = 0;
@@ -36,13 +37,16 @@ public class UserMain {
         String pass = read.nextLine();
         System.out.println("Enter the user role");
         String role = read.nextLine();
+        UserDetails ud = UserDetailsMain.add();
         Optional<User> userById = user.findById(id);
         if (userById.isPresent()){
             User u1 = userById.get();
             u1.setUserName(name);
             u1.setRole(role);
             u1.setPassword(pass);
+            u1.setUserDetails(ud);
             user.save(u1);
+            return u1;
         }
         else {
             User u2 = new User();
@@ -50,7 +54,9 @@ public class UserMain {
             u2.setUserName(name);
             u2.setRole(role);
             u2.setPassword(pass);
+            u2.setUserDetails(ud);
             user.save(u2);
+            return u2;
         }
     }
     public static void findId(){

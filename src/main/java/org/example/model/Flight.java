@@ -2,6 +2,9 @@ package org.example.model;
 
 import javax.persistence.*;
 import java.sql.Date;
+import java.util.List;
+import java.util.Set;
+
 @Entity
 @Table
 public class Flight {
@@ -23,6 +26,8 @@ public class Flight {
     private Date arrivalDate;
     @Column
     private String status;
+    @OneToMany(cascade = CascadeType.ALL,mappedBy = "flight")
+    private List<Booking> bookings;
 
     public Integer getId() {
         return id;
@@ -86,6 +91,14 @@ public class Flight {
 
     public void setStatus(String status) {
         this.status = status;
+    }
+
+    public List<Booking> getBookings() {
+        return bookings;
+    }
+
+    public void setUsers(List<Booking> users) {
+        this.bookings = users;
     }
 
     @Override

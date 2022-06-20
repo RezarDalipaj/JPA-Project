@@ -1,8 +1,12 @@
 package MainImpl;
 
+import org.example.Repository.UserRepository.UserRepository;
+import org.example.Repository.UserRepository.UserRepositoryImpl;
 import org.example.model.Booking;
+import org.example.model.Flight;
 import org.example.model.User;
 import org.example.services.BookingService;
+import org.example.services.FlightService;
 import org.example.services.UserService;
 
 import java.awt.print.Book;
@@ -18,7 +22,7 @@ public class BookingMain {
             System.out.println(b);
         }
     }
-    public static void add(){
+    public static Booking add(){
         Scanner read = new Scanner(System.in);
         BookingService booking = new BookingService();
         Integer id = 0;
@@ -31,22 +35,44 @@ public class BookingMain {
             System.out.println("Id should be a number");
             read.nextLine();
         }
-        Date date = new Date(System.currentTimeMillis());
-        System.out.println("Enter the status");
-        String status = read.nextLine();
-        Optional<Booking> bookingById = booking.findById(id);
-        if (bookingById.isPresent()){
-            Booking b1 = bookingById.get();
-            b1.setStatus(status);
-            b1.setBookingDate(date);
-            booking.save(b1);
+        System.out.println("Enter the id of the user who booked the flight");
+        int uId = read.nextInt();
+        UserService user = new UserService();
+        Optional<User> userById = user.findById(uId);
+        System.out.println("Enter the id of the flight");
+        int fId = read.nextInt();
+        FlightService flight = new FlightService();
+        Optional<Flight> flightById = flight.findById(fId);
+        if (userById.isPresent() && flightById.isPresent()){
+            User ubyId = userById.get();
+            Flight fbyId = flightById.get();
+            Date date = new Date(System.currentTimeMillis());
+            System.out.println("Enter the status");
+            String status = read.nextLine();
+            Optional<Booking> bookingById = booking.findById(id);
+            if (bookingById.isPresent()){
+                Booking b1 = bookingById.get();
+                b1.setStatus(status);
+                b1.setBookingDate(date);
+                b1.setUser(ubyId);
+                b1.setFlight(fbyId);
+                booking.save(b1);
+                return b1;
+            }
+            else {
+                Booking b2 = new Booking();
+                b2.setId(null);
+                b2.setStatus(status);
+                b2.setBookingDate(date);
+                b2.setUser(ubyId);
+                b2.setFlight(fbyId);
+                booking.save(b2);
+                return b2;
+            }
         }
         else {
-            Booking b2 = new Booking();
-            b2.setId(null);
-            b2.setStatus(status);
-            b2.setBookingDate(date);
-            booking.save(b2);
+            System.out.println("Couldnt add booking. Invalid data");
+            return null;
         }
     }
     public static void findId(){

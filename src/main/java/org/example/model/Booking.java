@@ -13,6 +13,12 @@ public class Booking {
         private Date bookingDate;
         @Column
         private String status;
+        @ManyToOne
+        @JoinColumn(name = "user_id",nullable = false)
+        private User user;
+        @ManyToOne
+        @JoinColumn(name = "flight_id", nullable = false)
+        private Flight flight;
 
     public Integer getId() {
         return id;
@@ -37,12 +43,31 @@ public class Booking {
     public void setStatus(String status) {
         this.status = status;
     }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public Flight getFlight() {
+        return flight;
+    }
+
+    public void setFlight(Flight flight) {
+        this.flight = flight;
+    }
+
     @Override
     public String toString() {
         return "Booking{" +
                 "id=" + id +
                 ", bookingDate=" + bookingDate +
                 ", status='" + status + '\'' +
+                ", user id=" + user.getId()+ "username: " + user.getUserName() +
+                ", flight id=" + flight.getId() + "airline: " + flight.getAirline() +
                 '}';
     }
 }

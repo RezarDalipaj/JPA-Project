@@ -42,10 +42,9 @@ public class BookingRepositoryImpl implements BookingRepository {
 
     @Override
     public Booking delete(Booking b) {
-        Booking booking = entityManager.find(Booking.class,b.getId());
         entityManager.getTransaction().begin();
-        entityManager.remove(booking);
+        entityManager.remove(b);
         entityManager.getTransaction().commit();
-        return booking;
+        return b;
     }
 }

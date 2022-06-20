@@ -17,6 +17,9 @@ public class UserDetails {
     private String email;
     @Column
     private String phoneNumber;
+    @OneToOne
+    @JoinColumn(name = "userId", referencedColumnName = "id")
+    private User user;
 
     public Integer getId() {
         return id;
@@ -66,6 +69,7 @@ public class UserDetails {
                 ", lastName='" + lastName + '\'' +
                 ", email='" + email + '\'' +
                 ", phoneNumber='" + phoneNumber + '\'' +
+                ", user=" + user.getId() +
                 '}';
     }
 }

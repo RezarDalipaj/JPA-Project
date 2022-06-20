@@ -2,9 +2,11 @@ package MainImpl;
 
 import org.example.model.Booking;
 import org.example.model.Flight;
+import org.example.model.User;
 import org.example.services.BookingService;
 import org.example.services.FlightService;
 
+import javax.persistence.TypedQuery;
 import java.util.*;
 
 public class FlightMain {
@@ -29,6 +31,7 @@ public class FlightMain {
             System.out.println("Id should be a number");
             read.nextLine();
         }
+//        List<User> users = flight.allUsers(id);
         System.out.println("Enter the origin");
         String origin = read.nextLine();
         System.out.println("Enter the destination");
@@ -41,6 +44,7 @@ public class FlightMain {
             f1.setOrigin(origin);
             f1.setDestination(dest);
             f1.setAirline(air);
+//            f1.setUsers(users);
             flight.save(f1);
         }
         else {
@@ -49,6 +53,7 @@ public class FlightMain {
             f2.setOrigin(origin);
             f2.setDestination(dest);
             f2.setAirline(air);
+//            f2.setUsers(users);
             flight.save(f2);
         }
     }

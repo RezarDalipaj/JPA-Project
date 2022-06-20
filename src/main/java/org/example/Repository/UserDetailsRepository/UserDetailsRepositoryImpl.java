@@ -44,10 +44,9 @@ public class UserDetailsRepositoryImpl implements UserDetailsRepository{
 
     @Override
     public UserDetails delete(UserDetails u) {
-        UserDetails userDetails = entityManager.find(UserDetails.class,u.getId());
         entityManager.getTransaction().begin();
-        entityManager.remove(userDetails);
+        entityManager.remove(u);
         entityManager.getTransaction().commit();
-        return userDetails;
+        return u;
     }
 }

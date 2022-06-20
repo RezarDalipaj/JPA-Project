@@ -22,4 +22,5 @@ public class FlightService {
     public Flight delete(Flight f){
         return flights.delete(f);
     }
+    public List<User> allUsers(int x){return flights.allUsers(x);}
 }
