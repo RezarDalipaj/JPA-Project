@@ -43,7 +43,6 @@ public class UserMain {
             u1.setUserName(name);
             u1.setRole(role);
             u1.setPassword(pass);
-//            u1.setUserDetails(ud);
             user.save(u1);
             UserDetails ud = UserDetailsMain.add(u1);
             u1.setUserDetails(ud);
@@ -56,7 +55,6 @@ public class UserMain {
             u2.setUserName(name);
             u2.setRole(role);
             u2.setPassword(pass);
-//            u2.setUserDetails(ud);
             user.save(u2);
             UserDetails ud = UserDetailsMain.add(u2);
             u2.setUserDetails(ud);
