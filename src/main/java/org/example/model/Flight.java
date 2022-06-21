@@ -26,7 +26,7 @@ public class Flight {
     private Date arrivalDate;
     @Column
     private String status;
-    @ManyToMany(cascade = CascadeType.ALL,mappedBy = "flights")
+    @ManyToMany(cascade = CascadeType.ALL, mappedBy = "flights")
     private List<Booking> bookings;
 
     public Integer getId() {

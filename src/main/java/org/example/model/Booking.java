@@ -21,8 +21,8 @@ public class Booking {
         @ManyToMany
         @JoinTable(
                 name = "booking_flight",
-                joinColumns = @JoinColumn(name = "flight_id"),
-                inverseJoinColumns = @JoinColumn(name = "booking_id"))
+                joinColumns = @JoinColumn(name = "booking_id"),
+                inverseJoinColumns = @JoinColumn(name = "flight_id"))
         private List<Flight> flights;
 
     public Integer getId() {
@@ -70,6 +70,7 @@ public class Booking {
         int i=1;
         for (Flight f:flights) {
             fl+="{Flight #"+i+": id="+f.getId()+", airline="+f.getAirline()+"} ";
+            i++;
         }
         return fl;
     }
