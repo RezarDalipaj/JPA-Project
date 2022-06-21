@@ -1,14 +1,16 @@
 package org.example.model;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 @Entity
 @Table
-public class UserDetails {
+public class UserDetails implements Serializable {
+
+    @OneToOne
+    @JoinColumn(nullable = false, unique = true, name = "userId", referencedColumnName = "id")
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(nullable = false, unique = true)
-    private Integer id;
+    private User theUser;
     @Column
     private String firstName;
     @Column
@@ -17,17 +19,6 @@ public class UserDetails {
     private String email;
     @Column
     private String phoneNumber;
-    @OneToOne
-    @JoinColumn(name = "userId", referencedColumnName = "id")
-    private User theUser;
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
 
     public String getFirstName() {
         return firstName;
@@ -72,7 +63,6 @@ public class UserDetails {
     @Override
     public String toString() {
         return "UserDetails{" +
-                "id=" + id +
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
                 ", email='" + email + '\'' +

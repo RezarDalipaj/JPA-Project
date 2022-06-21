@@ -13,21 +13,10 @@ public class UserDetailsRepositoryImpl implements UserDetailsRepository{
     private EntityManager entityManager = EntityManagerConfig.getEntityManager();
     @Override
     public UserDetails save(UserDetails u) {
-        if (u.getId()!=null){
-            entityManager.getTransaction().begin();
-            u.setFirstName(u.getFirstName());
-            u.setLastName(u.getLastName());
-            u.setEmail(u.getEmail());
-            u.setPhoneNumber(u.getPhoneNumber());
-            entityManager.getTransaction().commit();
-            System.out.println("User Details successfully updated");
-        }
-        else {
             entityManager.getTransaction().begin();
             entityManager.persist(u);
             entityManager.getTransaction().commit();
             System.out.println("User Details successfully added");
-        }
         return u;
     }
 

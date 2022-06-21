@@ -31,7 +31,6 @@ public class UserDetailsMain {
         System.out.println("Enter the phone number");
         String phone = read.nextLine();
         UserDetails ud2 = new UserDetails();
-        ud2.setId(null);
         ud2.setFirstName(fn);
         ud2.setLastName(ln);
         ud2.setEmail(email);
