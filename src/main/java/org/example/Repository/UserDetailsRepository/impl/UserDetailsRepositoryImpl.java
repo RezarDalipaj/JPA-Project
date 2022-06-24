@@ -1,6 +1,7 @@
-package org.example.Repository.UserDetailsRepository;
+package org.example.Repository.UserDetailsRepository.impl;
 
 import config.EntityManagerConfig;
+import org.example.Repository.UserDetailsRepository.UserDetailsRepository;
 import org.example.model.User;
 import org.example.model.UserDetails;
 
@@ -9,7 +10,7 @@ import javax.persistence.TypedQuery;
 import java.util.List;
 import java.util.Optional;
 
-public class UserDetailsRepositoryImpl implements UserDetailsRepository{
+public class UserDetailsRepositoryImpl implements UserDetailsRepository {
     private EntityManager entityManager = EntityManagerConfig.getEntityManager();
     @Override
     public UserDetails save(UserDetails u) {

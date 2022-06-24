@@ -1,4 +1,4 @@
-package org.example.services.BookingService;
+package org.example.services;
 
 import org.example.model.Booking;
 

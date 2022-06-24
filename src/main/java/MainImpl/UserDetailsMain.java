@@ -2,8 +2,8 @@ package MainImpl;
 
 import org.example.model.User;
 import org.example.model.UserDetails;
-import org.example.services.UserDetailsService.UserDetailsService;
-import org.example.services.UserDetailsService.UserDetailsServiceImpl;
+import org.example.services.UserDetailsService;
+import org.example.services.impl.UserDetailsServiceImpl;
 
 import java.util.*;
 

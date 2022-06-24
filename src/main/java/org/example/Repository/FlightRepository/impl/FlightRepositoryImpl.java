@@ -1,6 +1,7 @@
-package org.example.Repository.FlightRepository;
+package org.example.Repository.FlightRepository.impl;
 
 import config.EntityManagerConfig;
+import org.example.Repository.FlightRepository.FlightRepository;
 import org.example.model.Booking;
 import org.example.model.Flight;
 import org.example.model.User;
@@ -11,7 +12,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.Set;
 
-public class FlightRepositoryImpl implements FlightRepository{
+public class FlightRepositoryImpl implements FlightRepository {
     private EntityManager entityManager = EntityManagerConfig.getEntityManager();
     @Override
     public Flight save(Flight f) {

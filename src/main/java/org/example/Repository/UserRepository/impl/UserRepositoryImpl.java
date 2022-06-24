@@ -1,5 +1,6 @@
-package org.example.Repository.UserRepository;
+package org.example.Repository.UserRepository.impl;
 
+import org.example.Repository.UserRepository.UserRepository;
 import org.example.model.User;
 import config.EntityManagerConfig;
 
@@ -8,7 +9,7 @@ import javax.persistence.TypedQuery;
 import java.util.List;
 import java.util.Optional;
 
-public class UserRepositoryImpl implements UserRepository{
+public class UserRepositoryImpl implements UserRepository {
 
     private EntityManager entityManager = EntityManagerConfig.getEntityManager();
     @Override

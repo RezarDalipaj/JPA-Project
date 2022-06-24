@@ -1,4 +1,4 @@
-package org.example.services.FlightService;
+package org.example.services;
 
 import org.example.model.Flight;
 import org.example.model.User;

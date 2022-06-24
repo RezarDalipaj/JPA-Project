@@ -3,10 +3,10 @@ package MainImpl;
 import org.example.model.Booking;
 import org.example.model.Flight;
 import org.example.model.User;
-import org.example.services.BookingService.BookingService;
-import org.example.services.BookingService.BookingServiceImpl;
-import org.example.services.FlightService.FlightServiceImpl;
-import org.example.services.UserService.UserServiceImpl;
+import org.example.services.BookingService;
+import org.example.services.impl.BookingServiceImpl;
+import org.example.services.impl.FlightServiceImpl;
+import org.example.services.impl.UserServiceImpl;
 
 import java.sql.Date;
 import java.util.*;
@@ -69,20 +69,14 @@ public class BookingMain {
             Optional<Booking> bookingById = booking.findById(id);
             if (bookingById.isPresent()){
                 Booking b1 = bookingById.get();
-                b1.setStatus(status);
-                b1.setBookingDate(date);
-                b1.setUser(ubyId);
-                b1.setFlights(flights);
+                b1=setter(b1,status,date,ubyId,flights);
                 booking.save(b1);
                 return b1;
             }
             else {
                 Booking b2 = new Booking();
                 b2.setId(null);
-                b2.setStatus(status);
-                b2.setBookingDate(date);
-                b2.setUser(ubyId);
-                b2.setFlights(flights);
+                b2=setter(b2,status,date,ubyId,flights);
                 booking.save(b2);
                 return b2;
             }
@@ -133,5 +127,12 @@ public class BookingMain {
         }
         else
             System.out.println("This booking doesnt exist");
+    }
+    public static Booking setter(Booking b1, String status, Date date, User ubyId, List<Flight> flights){
+        b1.setStatus(status);
+        b1.setBookingDate(date);
+        b1.setUser(ubyId);
+        b1.setFlights(flights);
+        return b1;
     }
 }

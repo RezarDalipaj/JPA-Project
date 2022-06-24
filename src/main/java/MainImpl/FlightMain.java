@@ -1,8 +1,8 @@
 package MainImpl;
 
 import org.example.model.Flight;
-import org.example.services.FlightService.FlightService;
-import org.example.services.FlightService.FlightServiceImpl;
+import org.example.services.FlightService;
+import org.example.services.impl.FlightServiceImpl;
 
 import java.util.*;
 
@@ -38,18 +38,14 @@ public class FlightMain {
         Optional<Flight> flightById = flight.findById(id);
         if (flightById.isPresent()){
             Flight f1 = flightById.get();
-            f1.setOrigin(origin);
-            f1.setDestination(dest);
-            f1.setAirline(air);
+            f1=setter(f1,origin,dest,air);
 //            f1.setUsers(users);
             flight.save(f1);
         }
         else {
             Flight f2 = new Flight();
             f2.setId(null);
-            f2.setOrigin(origin);
-            f2.setDestination(dest);
-            f2.setAirline(air);
+            f2=setter(f2,origin,dest,air);
 //            f2.setUsers(users);
             flight.save(f2);
         }
@@ -95,5 +91,11 @@ public class FlightMain {
         }
         else
             System.out.println("This flight doesnt exist");
+    }
+    public static Flight setter(Flight f1, String origin, String dest, String air){
+        f1.setOrigin(origin);
+        f1.setDestination(dest);
+        f1.setAirline(air);
+        return f1;
     }
 }

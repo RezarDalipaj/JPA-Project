@@ -1,6 +1,7 @@
-package org.example.Repository.BookingRepository;
+package org.example.Repository.BookingRepository.impl;
 
 import config.EntityManagerConfig;
+import org.example.Repository.BookingRepository.BookingRepository;
 import org.example.model.Booking;
 
 import javax.persistence.EntityManager;

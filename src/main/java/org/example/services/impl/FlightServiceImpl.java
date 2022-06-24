@@ -1,12 +1,13 @@
-package org.example.services.FlightService;
+package org.example.services.impl;
 import org.example.Repository.FlightRepository.FlightRepository;
-import org.example.Repository.FlightRepository.FlightRepositoryImpl;
+import org.example.Repository.FlightRepository.impl.FlightRepositoryImpl;
 import org.example.model.Flight;
 import org.example.model.User;
+import org.example.services.FlightService;
 
 import java.util.List;
 import java.util.Optional;
-public class FlightServiceImpl implements FlightService{
+public class FlightServiceImpl implements FlightService {
     FlightRepository flights = new FlightRepositoryImpl();
     public Flight save(Flight f){
         return flights.save(f);

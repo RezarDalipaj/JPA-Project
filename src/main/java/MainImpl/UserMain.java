@@ -2,8 +2,8 @@ package MainImpl;
 
 import org.example.model.User;
 import org.example.model.UserDetails;
-import org.example.services.UserService.UserService;
-import org.example.services.UserService.UserServiceImpl;
+import org.example.services.UserService;
+import org.example.services.impl.UserServiceImpl;
 
 import java.util.InputMismatchException;
 import java.util.List;
@@ -41,9 +41,7 @@ public class UserMain {
         Optional<User> userById = user.findById(id);
         if (userById.isPresent()){
             User u1 = userById.get();
-            u1.setUserName(name);
-            u1.setRole(role);
-            u1.setPassword(pass);
+            u1=setter(u1,role,pass,name);
             user.save(u1);
             UserDetails ud = UserDetailsMain.add(u1);
             u1.setUserDetails(ud);
@@ -53,9 +51,7 @@ public class UserMain {
         else {
             User u2 = new User();
             u2.setId(null);
-            u2.setUserName(name);
-            u2.setRole(role);
-            u2.setPassword(pass);
+            u2=setter(u2,role,pass,name);
             user.save(u2);
             UserDetails ud = UserDetailsMain.add(u2);
             u2.setUserDetails(ud);
@@ -104,5 +100,11 @@ public class UserMain {
         }
         else
             System.out.println("This user doesnt exist");
+    }
+    public static User setter(User u1,String role, String pass, String name){
+        u1.setUserName(name);
+        u1.setRole(role);
+        u1.setPassword(pass);
+        return u1;
     }
 }

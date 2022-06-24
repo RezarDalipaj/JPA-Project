@@ -7,7 +7,7 @@
         <description>
             Persistence unit for the JPA project
         </description>
-        <provider>org.hibernate.ejb.HibernatePersistence</provider>
+<!--        <provider>org.hibernate.ejb.HibernatePersistence</provider>-->
         <class>org.example.model.User</class>
         <class>org.example.model.Booking</class>
         <class>org.example.model.Flight</class>
