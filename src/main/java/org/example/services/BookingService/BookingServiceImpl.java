@@ -1,4 +1,4 @@
-package org.example.services;
+package org.example.services.BookingService;
 
 import org.example.Repository.BookingRepository.BookingRepository;
 import org.example.Repository.BookingRepository.BookingRepositoryImpl;
@@ -7,7 +7,7 @@ import org.example.model.Booking;
 import java.util.List;
 import java.util.Optional;
 
-public class BookingService {
+public class BookingServiceImpl implements BookingService{
     BookingRepository bookings = new BookingRepositoryImpl();
     public Booking save(Booking b){
         return bookings.save(b);

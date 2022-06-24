@@ -2,7 +2,8 @@ package MainImpl;
 
 import org.example.model.User;
 import org.example.model.UserDetails;
-import org.example.services.UserService;
+import org.example.services.UserService.UserService;
+import org.example.services.UserService.UserServiceImpl;
 
 import java.util.InputMismatchException;
 import java.util.List;
@@ -11,7 +12,7 @@ import java.util.Scanner;
 
 public class UserMain {
     public static void find(){
-        UserService user = new UserService();
+        UserService user = new UserServiceImpl();
         List<User> userList = user.findAll();
         System.out.println("All the users...\n");
         for (User us : userList) {
@@ -20,7 +21,7 @@ public class UserMain {
     }
     public static User add(){
         Scanner read = new Scanner(System.in);
-        UserService user = new UserService();
+        UserService user = new UserServiceImpl();
         Integer id = 0;
         System.out.println("\nAdding user\n");
         System.out.println("Enter the user id");
@@ -64,7 +65,7 @@ public class UserMain {
     }
     public static void findId(){
         Scanner read = new Scanner(System.in);
-        UserService user = new UserService();
+        UserService user = new UserServiceImpl();
         Integer find = 0;
         System.out.println("\nFinding user by id\n");
         try {
@@ -86,7 +87,7 @@ public class UserMain {
     public static void remove(){
         Integer find = 0;
         Scanner read = new Scanner(System.in);
-        UserService user = new UserService();
+        UserService user = new UserServiceImpl();
         System.out.println("\nDeleting user\n");
         try {
             System.out.println("Enter the user id you want to delete");

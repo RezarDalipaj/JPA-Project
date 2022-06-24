@@ -1,17 +1,14 @@
 package MainImpl;
 
-import org.example.model.Booking;
 import org.example.model.Flight;
-import org.example.model.User;
-import org.example.services.BookingService;
-import org.example.services.FlightService;
+import org.example.services.FlightService.FlightService;
+import org.example.services.FlightService.FlightServiceImpl;
 
-import javax.persistence.TypedQuery;
 import java.util.*;
 
 public class FlightMain {
     public static void find(){
-        FlightService flight = new FlightService();
+        FlightService flight = new FlightServiceImpl();
         List<Flight> flightList = flight.findAll();
         System.out.println("All the flights...\n");
         for (Flight f : flightList) {
@@ -20,7 +17,7 @@ public class FlightMain {
     }
     public static void add(){
         Scanner read = new Scanner(System.in);
-        FlightService flight = new FlightService();
+        FlightService flight = new FlightServiceImpl();
         Integer id = 0;
         System.out.println("\nAdding flight\n");
         System.out.println("Enter the flight id");
@@ -59,7 +56,7 @@ public class FlightMain {
     }
     public static void findId(){
         Scanner read = new Scanner(System.in);
-        FlightService flight = new FlightService();
+        FlightService flight = new FlightServiceImpl();
         Integer find = 0;
         System.out.println("\nFinding flight by id\n");
         try {
@@ -81,7 +78,7 @@ public class FlightMain {
     public static void remove(){
         Integer find = 0;
         Scanner read = new Scanner(System.in);
-        FlightService flight = new FlightService();
+        FlightService flight = new FlightServiceImpl();
         System.out.println("\nDeleting flight\n");
         try {
             System.out.println("Enter the flight id you want to delete");

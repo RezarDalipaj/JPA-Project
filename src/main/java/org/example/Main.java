@@ -2,14 +2,8 @@ package org.example;
 
 import MainImpl.BookingMain;
 import MainImpl.FlightMain;
-import MainImpl.UserDetailsMain;
 import MainImpl.UserMain;
-import org.example.model.User;
-import org.example.services.UserService;
 
-import java.util.InputMismatchException;
-import java.util.List;
-import java.util.Optional;
 import java.util.Scanner;
 
 public class Main {

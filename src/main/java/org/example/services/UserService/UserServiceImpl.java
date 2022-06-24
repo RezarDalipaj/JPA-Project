@@ -1,4 +1,4 @@
-package org.example.services;
+package org.example.services.UserService;
 
 import org.example.Repository.UserRepository.UserRepository;
 import org.example.Repository.UserRepository.UserRepositoryImpl;
@@ -7,7 +7,7 @@ import org.example.model.User;
 import java.util.List;
 import java.util.Optional;
 
-public class UserService {
+public class UserServiceImpl implements UserService{
     UserRepository users = new UserRepositoryImpl();
     public User save(User u){
         return users.save(u);

@@ -1,15 +1,12 @@
-package org.example.services;
+package org.example.services.UserDetailsService;
 import org.example.Repository.UserDetailsRepository.UserDetailsRepository;
 import org.example.Repository.UserDetailsRepository.UserDetailsRepositoryImpl;
-import org.example.Repository.UserRepository.UserRepository;
-import org.example.Repository.UserRepository.UserRepositoryImpl;
-import org.example.model.User;
 import org.example.model.UserDetails;
 
 import java.util.List;
 import java.util.Optional;
 
-public class UserDetailsService {
+public class UserDetailsServiceImpl implements UserDetailsService{
     UserDetailsRepository users = new UserDetailsRepositoryImpl();
     public UserDetails save(UserDetails u){
         return users.save(u);

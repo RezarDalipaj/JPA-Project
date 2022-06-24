@@ -1,21 +1,19 @@
 package MainImpl;
 
-import org.example.Repository.UserRepository.UserRepository;
-import org.example.Repository.UserRepository.UserRepositoryImpl;
 import org.example.model.Booking;
 import org.example.model.Flight;
 import org.example.model.User;
-import org.example.services.BookingService;
-import org.example.services.FlightService;
-import org.example.services.UserService;
+import org.example.services.BookingService.BookingService;
+import org.example.services.BookingService.BookingServiceImpl;
+import org.example.services.FlightService.FlightServiceImpl;
+import org.example.services.UserService.UserServiceImpl;
 
-import java.awt.print.Book;
 import java.sql.Date;
 import java.util.*;
 
 public class BookingMain {
     public static void find(){
-        BookingService booking = new BookingService();
+        BookingService booking = new BookingServiceImpl();
         List<Booking> bookingList = booking.findAll();
         System.out.println("All the bookings...\n");
         for (Booking b : bookingList) {
@@ -24,7 +22,7 @@ public class BookingMain {
     }
     public static Booking add(){
         Scanner read = new Scanner(System.in);
-        BookingService booking = new BookingService();
+        BookingService booking = new BookingServiceImpl();
         Integer id = 0;
         System.out.println("\nAdding booking\n");
         System.out.println("Enter the booking id");
@@ -37,11 +35,11 @@ public class BookingMain {
         }
         System.out.println("Enter the id of the user who booked the flight");
         int uId = read.nextInt();
-        UserService user = new UserService();
+        UserServiceImpl user = new UserServiceImpl();
         Optional<User> userById = user.findById(uId);
         System.out.println("The flights of this booking...");
         int result = 0;
-        FlightService flight = new FlightService();
+        FlightServiceImpl flight = new FlightServiceImpl();
         List<Flight> flights = new ArrayList<>();
         while (result != -1){
             System.out.println("Add one flight id to this booking (-1 to stop)");
@@ -96,7 +94,7 @@ public class BookingMain {
     }
     public static void findId(){
         Scanner read = new Scanner(System.in);
-        BookingService booking = new BookingService();
+        BookingService booking = new BookingServiceImpl();
         Integer find = 0;
         System.out.println("\nFinding booking by id\n");
         try {
@@ -118,7 +116,7 @@ public class BookingMain {
     public static void remove(){
         Integer find = 0;
         Scanner read = new Scanner(System.in);
-        BookingService booking = new BookingService();
+        BookingService booking = new BookingServiceImpl();
         System.out.println("\nDeleting booking\n");
         try {
             System.out.println("Enter the booking id you want to delete");
