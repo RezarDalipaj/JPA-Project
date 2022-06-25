@@ -7,23 +7,23 @@ import java.util.List;
 @Entity
 @Table
 public class Booking {
-        @Id
-        @GeneratedValue(strategy = GenerationType.IDENTITY)
-        @Column(unique = true)
-        private Integer id;
-        @Column
-        private Date bookingDate;
-        @Column
-        private String status;
-        @ManyToOne
-        @JoinColumn(name = "user_id",nullable = false)
-        private User user;
-        @ManyToMany
-        @JoinTable(
-                name = "booking_flight",
-                joinColumns = @JoinColumn(name = "booking_id"),
-                inverseJoinColumns = @JoinColumn(name = "flight_id"))
-        private List<Flight> flights;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(unique = true)
+    private Integer id;
+    @Column(name = "booking_date")
+    private Date bookingDate;
+    @Column
+    private String status;
+    @ManyToOne
+    @JoinColumn(name = "user_id",nullable = false)
+    private User user;
+    @ManyToMany
+    @JoinTable(
+            name = "booking_flight",
+            joinColumns = @JoinColumn(name = "booking_id"),
+            inverseJoinColumns = @JoinColumn(name = "flight_id"))
+    private List<Flight> flights;
 
     public Integer getId() {
         return id;

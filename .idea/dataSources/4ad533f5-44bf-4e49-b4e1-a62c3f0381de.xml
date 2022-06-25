@@ -1009,12 +1009,12 @@ sys|schema||mysql.sys|localhost|TRIGGER|G</Grants>
       <Engine>MyISAM</Engine>
       <CollationName>utf8mb4_0900_ai_ci</CollationName>
     </table>
-    <table id="291" parent="277" name="userdetails">
+    <table id="291" parent="277" name="user_details">
       <Engine>MyISAM</Engine>
       <CollationName>utf8mb4_0900_ai_ci</CollationName>
     </table>
     <column id="292" parent="287" name="id">
-      <AutoIncrement>3</AutoIncrement>
+      <AutoIncrement>1</AutoIncrement>
       <DataType>int|0s</DataType>
       <NotNull>1</NotNull>
       <Position>1</Position>
@@ -1041,26 +1041,26 @@ sys|schema||mysql.sys|localhost|TRIGGER|G</Grants>
       <NameSurrogate>1</NameSurrogate>
       <Primary>1</Primary>
     </key>
-    <column id="298" parent="288" name="flight_id">
+    <column id="298" parent="288" name="booking_id">
       <DataType>int|0s</DataType>
       <NotNull>1</NotNull>
       <Position>1</Position>
     </column>
-    <column id="299" parent="288" name="booking_id">
+    <column id="299" parent="288" name="flight_id">
       <DataType>int|0s</DataType>
       <NotNull>1</NotNull>
       <Position>2</Position>
     </column>
-    <index id="300" parent="288" name="FKg3h7toss25sm2bemhkcvma0x3">
-      <ColNames>flight_id</ColNames>
-      <Type>btree</Type>
-    </index>
-    <index id="301" parent="288" name="FKnfdadvtvg3yy7o698xlk5dcad">
+    <index id="300" parent="288" name="FK6p9gao5savu26p7eb38vrcq30">
       <ColNames>booking_id</ColNames>
       <Type>btree</Type>
     </index>
+    <index id="301" parent="288" name="FKh5chabjuw1uvy9k5we8v5d5qf">
+      <ColNames>flight_id</ColNames>
+      <Type>btree</Type>
+    </index>
     <column id="302" parent="289" name="id">
-      <AutoIncrement>2</AutoIncrement>
+      <AutoIncrement>1</AutoIncrement>
       <DataType>int|0s</DataType>
       <NotNull>1</NotNull>
       <Position>1</Position>
@@ -1099,7 +1099,7 @@ sys|schema||mysql.sys|localhost|TRIGGER|G</Grants>
       <Primary>1</Primary>
     </key>
     <column id="311" parent="290" name="id">
-      <AutoIncrement>3</AutoIncrement>
+      <AutoIncrement>1</AutoIncrement>
       <DataType>int|0s</DataType>
       <NotNull>1</NotNull>
       <Position>1</Position>
@@ -1121,31 +1121,46 @@ sys|schema||mysql.sys|localhost|TRIGGER|G</Grants>
       <NameSurrogate>1</NameSurrogate>
       <Primary>1</Primary>
     </key>
-    <column id="316" parent="291" name="email">
-      <DataType>varchar(255)|0s</DataType>
+    <column id="316" parent="291" name="id">
+      <AutoIncrement>1</AutoIncrement>
+      <DataType>int|0s</DataType>
+      <NotNull>1</NotNull>
       <Position>1</Position>
     </column>
-    <column id="317" parent="291" name="firstName">
+    <column id="317" parent="291" name="email">
       <DataType>varchar(255)|0s</DataType>
       <Position>2</Position>
     </column>
-    <column id="318" parent="291" name="lastName">
+    <column id="318" parent="291" name="firstName">
       <DataType>varchar(255)|0s</DataType>
       <Position>3</Position>
     </column>
-    <column id="319" parent="291" name="phoneNumber">
+    <column id="319" parent="291" name="lastName">
       <DataType>varchar(255)|0s</DataType>
       <Position>4</Position>
     </column>
-    <column id="320" parent="291" name="userId">
-      <DataType>int|0s</DataType>
-      <NotNull>1</NotNull>
+    <column id="320" parent="291" name="phoneNumber">
+      <DataType>varchar(255)|0s</DataType>
       <Position>5</Position>
     </column>
-    <key id="321" parent="291" name="PRIMARY">
+    <column id="321" parent="291" name="userId">
+      <DataType>int|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>6</Position>
+    </column>
+    <index id="322" parent="291" name="UK_cnkt9eo3v07lia586lmjtt217">
       <ColNames>userId</ColNames>
+      <Type>btree</Type>
+      <Unique>1</Unique>
+    </index>
+    <key id="323" parent="291" name="PRIMARY">
+      <ColNames>id</ColNames>
       <NameSurrogate>1</NameSurrogate>
       <Primary>1</Primary>
+    </key>
+    <key id="324" parent="291" name="UK_cnkt9eo3v07lia586lmjtt217">
+      <ColNames>userId</ColNames>
+      <UnderlyingIndexName>UK_cnkt9eo3v07lia586lmjtt217</UnderlyingIndexName>
     </key>
   </database-model>
 </dataSource>
